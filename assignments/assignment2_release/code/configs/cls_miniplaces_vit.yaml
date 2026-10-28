@@ -1,0 +1,12 @@
+output_folder: "../logs"
+model_type: "VIT"
+dataset:
+  root_folder: "../data"
+
+opt:
+  # Assignment ViT schedule. Architecture stays at the SimpleViT defaults.
+  type: AdamW
+  weight_decay: 0.05
+  learning_rate: 0.001
+
+# see cls_libs/config.py for more details

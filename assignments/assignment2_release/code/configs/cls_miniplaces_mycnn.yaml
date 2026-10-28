@@ -1,0 +1,10 @@
+output_folder: "../logs"
+model_type: "CNN"
+dataset:
+  root_folder: "../data"
+
+# Custom ResidualNet. No variant key, so build_model uses default_cnn_model.
+# Same schedule as the SimpleNet baseline: batch 512, SGD lr 0.1, 60 epochs,
+# 1 warmup epoch, cosine decay, cuda:0. Train this on the GPU VM.
+
+# see cls_libs/config.py for more details

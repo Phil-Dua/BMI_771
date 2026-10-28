@@ -1,0 +1,48 @@
+% Revised proposal for the Snapshot Wisconsin: Oh Deer project.
+% Put this .tex and oh_deer_references.bib in the OFFICIAL CVPR 2026 author kit.
+% Compile using pdflatex -> bibtex -> pdflatex -> pdflatex.
+% IMPORTANT: Replace all author placeholders before Canvas submission.
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{cvpr} % camera-ready: no [review] or [pagenumbers] option
+\usepackage{microtype}
+\usepackage[breaklinks,colorlinks,allcolors=blue]{hyperref}Í
+
+\title{Beyond the Leaderboard: What Makes Deer Demographics Recognizable\\
+in Snapshot Wisconsin Trail-Camera Images?}
+\author{\textbf{[Team Member 1]}\\
+University of Wisconsin--Madison\\
+\texttt{[email1]@wisc.edu}
+\and
+\textbf{[Team Member 2]}\\
+University of Wisconsin--Madison\\
+\texttt{[email2]@wisc.edu}}
+‹
+\begin{document}
+\maketitle
+\thispagestyle{empty} % camera-ready: suppress page number
+
+\section{Problem definition}
+We will predict two labels for white-tailed deer in trail-camera images: \emph{antler presence} (antlered/antlerless) and \emph{age group} (adult/young). The Snapshot Wisconsin ``Oh Deer'' challenge provides 4,880 labeled images and animal bounding boxes, with F1-based leaderboard evaluation \cite{bemowski2026,nexus2026}. According to the challenge briefing, the available boxes originate from a MegaDetector detection pipeline \cite{beery2019}. We ask: \emph{How do pretraining, animal cropping, and seasonal context affect these predictions, particularly at camera sites unseen during training?} We will treat antler presence as an observed visual attribute, not as a direct substitute for sex.
+
+\section{Motivation}
+Snapshot Wisconsin has collected more than 100 million images, creating a practical need for scalable wildlife annotation \cite{dnr2025}. Deer age-related observations are relevant to population monitoring, but visual categorization is difficult: fawns change appearance as they mature; small or occluded antlers can be ambiguous; and night-time infrared imagery limits visible detail. Even human observers make systematic age/sex classification errors on white-tailed deer photographs \cite{newbolt2019}. Models can also exploit fixed camera backgrounds and lose accuracy at novel locations \cite{beery2018}. Prior work demonstrates the feasibility of learning age and sex labels for \emph{red deer} in a different environment \cite{chemery2026} and the value of detector-based crops in camera-trap classification \cite{vyskocil2025}. Our contribution is a controlled study of which signals improve \emph{white-tailed deer} age and antler prediction without encouraging location-specific shortcuts.
+
+\section{Tentative approach}
+We will use a shared image encoder with two binary classification heads. Three focused comparisons will guide the experiments:
+
+\noindent\textbf{(1) Pretrained features.} Compare an ImageNet-pretrained ResNet-50 baseline with DINOv2 \cite{oquab2024} and biologically pretrained BioCLIP 2 \cite{gu2025}. We will evaluate frozen-feature linear probes under matched data splits and selectively fine-tune promising backbones. For BioCLIP 2, we will also test natural-language zero-shot prompts, a capability of CLIP-style vision--language models \cite{radford2021}.
+
+\noindent\textbf{(2) Localization.} Compare whole-frame inputs with crops from the \emph{provided detector-generated boxes}, including a padded-crop variant that retains nearby context. This avoids treating detector predictions as human-verified ground truth. We will inspect misclassifications and, if time permits, attention maps to assess whether backgrounds dominate the decision.
+
+\noindent\textbf{(3) Seasonal context.} Compare image-only predictions with late fusion of month/season, where capture dates are available. We will test performance both with and without metadata at inference, and will \emph{not} use raw camera-site IDs as predictors for unseen-site evaluation.
+
+\section{Evaluation plan}
+\textbf{Metrics.} Report the challenge F1 score when its exact evaluation implementation is available; independently report macro-F1 for each label, class-wise precision/recall, confusion matrices, and inference latency. \textbf{Splits.} Compare a within-site split with a camera-site-held-out split, ensuring images from the same capture burst stay together wherever burst identifiers or timestamps allow. The latter protocol requires usable site metadata; if these are unavailable, we will report that limitation rather than claim cross-site generalization. \textbf{Ablations.} Hold preprocessing and training budgets fixed while varying backbone, crop type, and metadata. We will check performance by day/night and season, where those labels are available. \textbf{Expected outcome.} Identify whether biological pretraining, localized evidence, or temporal context offers gains that persist at unseen cameras. As a stretch goal, we will test one additional ecologically useful attribute (e.g., visible snow), provided labels can be obtained; this also addresses the challenge's usefulness criterion. Baselines will be completed first, followed by location and metadata ablations for the final report.
+
+% The instructor permits ONLY references after the first page.
+\clearpage
+{\small
+\bibliographystyle{ieeetr}
+\bibliography{oh_deer_references}
+}
+\end{document}

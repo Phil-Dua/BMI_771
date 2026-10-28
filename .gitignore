@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Image datasets. Re-download on another machine; they are too large for git.
+# Assignment 2 detection: bash download_det_dataset.sh
+assignments/assignment2_release/data/VOCdevkit/
+# Assignment 2 classification: bash download_cls_dataset.sh
+assignments/assignment2_release/data/images/

@@ -1,0 +1,19 @@
+output_folder: "../logs"
+model_type: "CNN"
+dataset:
+  root_folder: "../data"
+model:
+  # Baseline from the writeup. "simple" keeps SimpleNet after default_cnn_model
+  # is pointed at ResidualNet. Device, batch 512, SGD lr 0.1, and 60 epochs
+  # come from cls_libs/config.py (cuda:0, fp16 on CUDA).
+  variant: simple
+
+# other parameters can be specified in this yaml file
+# e.g. the following lines will reset the number of training epochs to 80
+#opt:
+#  epochs: 80
+# e.g. the following lines will run the code on cpu
+#devices:
+#  - "cpu"
+
+# see cls_libs/config.py for more details

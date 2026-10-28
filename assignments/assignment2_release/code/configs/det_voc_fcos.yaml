@@ -1,0 +1,11 @@
+output_folder: "../logs"
+loader:
+  # Assignment detection batch. Learning rate 5e-3, 10 epochs, and cuda:0
+  # come from det_libs/config.py.
+  batch_size: 4
+  num_workers: 4
+dataset:
+  img_folder: "../data/VOCdevkit/VOC2007/JPEGImages"
+  json_folder: "../data"
+
+# see det_libs/config.py for more details

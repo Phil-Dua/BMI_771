@@ -1,0 +1,635 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.31)  14 OCT 2026 12:29
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**oh_deer_revised.tex
+(./oh_deer_revised.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count188
+\c@section=\count189
+\c@subsection=\count190
+\c@subsubsection=\count191
+\c@paragraph=\count192
+\c@subparagraph=\count193
+\c@figure=\count194
+\c@table=\count195
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (./cvpr.sty
+Package: cvpr 2026 LaTeX class for IEEE CVPR
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2023/05/13 v2.17o AMS math features
+\@mathmargin=\skip50
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen143
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen144
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count196
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count197
+\leftroot@=\count198
+LaTeX Info: Redefining \overline on input line 399.
+LaTeX Info: Redefining \colon on input line 410.
+\classnum@=\count199
+\DOTSCASE@=\count266
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+LaTeX Info: Redefining \big on input line 722.
+LaTeX Info: Redefining \Big on input line 723.
+LaTeX Info: Redefining \bigg on input line 724.
+LaTeX Info: Redefining \Bigg on input line 725.
+\big@size=\dimen145
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count267
+LaTeX Info: Redefining \bmod on input line 905.
+LaTeX Info: Redefining \pmod on input line 910.
+LaTeX Info: Redefining \smash on input line 940.
+LaTeX Info: Redefining \relbar on input line 970.
+LaTeX Info: Redefining \Relbar on input line 971.
+\c@MaxMatrixCols=\count268
+\dotsspace@=\muskip16
+\c@parentequation=\count269
+\dspbrk@lvl=\count270
+\tag@help=\toks19
+\row@=\count271
+\column@=\count272
+\maxfields@=\count273
+\andhelp@=\toks20
+\eqnshift@=\dimen146
+\alignsep@=\dimen147
+\tagshift@=\dimen148
+\tagwidth@=\dimen149
+\totwidth@=\dimen150
+\lineht@=\dimen151
+\@envbody=\toks21
+\multlinegap=\skip51
+\multlinetaggap=\skip52
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2953.
+LaTeX Info: Redefining \] on input line 2954.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen152
+\lightrulewidth=\dimen153
+\cmidrulewidth=\dimen154
+\belowrulesep=\dimen155
+\belowbottomsep=\dimen156
+\aboverulesep=\dimen157
+\abovetopsep=\dimen158
+\cmidrulesep=\dimen159
+\cmidrulekern=\dimen160
+\defaultaddspace=\dimen161
+\@cmidla=\count274
+\@cmidlb=\count275
+\@aboverulesep=\dimen162
+\@belowrulesep=\dimen163
+\@thisruleclass=\count276
+\@lastruleclass=\count277
+\@thisrulewidth=\dimen164
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip53
+\bibsep=\skip54
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count278
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/silence/silence.sty
+Package: silence 2012/07/02 v1.5b Selective filtering of warnings and error mes
+sages
+\sl@Save=\count279
+\sl@StateNumber=\count280
+\sl@MessageCount=\count281
+\sl@Casualties=\count282
+\sl@Filter=\toks23
+\sl@Message=\toks24
+\sl@UnexpandedMessage=\toks25
+\sl@Mess@ge=\toks26
+\sl@WarningCount=\count283
+\sl@WarningNumber=\count284
+\sl@WarningCasualties=\count285
+\sl@TempBOW=\toks27
+\sl@BankOfWarnings=\toks28
+LaTeX Info: Redefining \GenericWarning on input line 433.
+\sl@ErrorCount=\count286
+\sl@ErrorNumber=\count287
+\sl@ErrorCasualties=\count288
+\sl@TempBOE=\toks29
+\sl@BankOfErrors=\toks30
+LaTeX Info: Redefining \GenericError on input line 601.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count289
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen165
+\captionmargin=\dimen166
+\caption@leftmargin=\dimen167
+\caption@rightmargin=\dimen168
+\caption@width=\dimen169
+\caption@indent=\dimen170
+\caption@parindent=\dimen171
+\caption@hangindent=\dimen172
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count290
+\c@continuedfloat=\count291
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count292
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count293
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+CVPR 8.5 x 11-Inch Proceedings Style `cvpr.sty'.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip55
+\enit@outerparindent=\dimen173
+\enit@toks=\toks31
+\enit@inbox=\box53
+\enit@count@id=\count294
+\enitdp@description=\count295
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
+\MT@toks=\toks32
+\MT@tempbox=\box54
+\MT@count=\count296
+LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
+LaTeX Info: Redefining \leftprotrusion on input line 1060.
+\MT@prot@toks=\toks33
+LaTeX Info: Redefining \rightprotrusion on input line 1078.
+LaTeX Info: Redefining \textls on input line 1368.
+\MT@outer@kern=\dimen174
+LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
+\MT@listname@count=\count297
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
+
+LaTeX Info: Redefining \lsstyle on input line 902.
+LaTeX Info: Redefining \lslig on input line 902.
+\MT@outer@space=\skip56
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2023/03/13 v3.1a microtype main configuration file (RS)
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count298
+)
+\@linkdim=\dimen175
+\Hy@linkcounter=\count299
+\Hy@pagecounter=\count300
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count301
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 4062.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4062.
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count302
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen176
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count303
+\Field@Width=\dimen177
+\Fld@charsize=\dimen178
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring ON on input line 6081.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count304
+\c@Item=\count305
+\c@Hfootnote=\count306
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count307
+\c@bookmark@seq@number=\count308
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+
+(/usr/local/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+85.
+)
+\Hy@SectionHShift=\skip57
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
+Package cleveref Info: `hyperref' support loaded on input line 2370.
+LaTeX Info: Redefining \cref on input line 2370.
+LaTeX Info: Redefining \Cref on input line 2370.
+LaTeX Info: Redefining \crefrange on input line 2370.
+LaTeX Info: Redefining \Crefrange on input line 2370.
+LaTeX Info: Redefining \cpageref on input line 2370.
+LaTeX Info: Redefining \Cpageref on input line 2370.
+LaTeX Info: Redefining \cpagerefrange on input line 2370.
+LaTeX Info: Redefining \Cpagerefrange on input line 2370.
+LaTeX Info: Redefining \labelcref on input line 2370.
+LaTeX Info: Redefining \labelcpageref on input line 2370.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+30.
+Package cleveref Info: always capitalise cross-reference names on input line 78
+52.
+)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
+0.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count309
+\l__pdf_internal_box=\box55
+)
+(./oh_deer_revised.aux)
+\openout1 = `oh_deer_revised.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 20.
+LaTeX Font Info:    ... okay on input line 20.
+
+(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count310
+\scratchdimen=\dimen179
+\scratchbox=\box56
+\nofMPsegments=\count311
+\nofMParguments=\count312
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count313
+\MPscratchDim=\dimen180
+\MPnumerator=\count314
+\makeMPintoPDFobject=\count315
+\everyMPtoPDFconversion=\toks35
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+ABD: EveryShipout initializing macros
+LaTeX Info: Redefining \microtypecontext on input line 20.
+Package microtype Info: Applying patch `item' on input line 20.
+Package microtype Info: Applying patch `toc' on input line 20.
+Package microtype Info: Applying patch `eqnum' on input line 20.
+Package microtype Info: Applying patch `footnote' on input line 20.
+Package microtype Info: Applying patch `verbatim' on input line 20.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `alltext-nott'.
+LaTeX Info: Redefining \showhyphens on input line 20.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
+)
+Package hyperref Info: Link coloring ON on input line 20.
+
+(./oh_deer_revised.out) (./oh_deer_revised.out)
+\@outlinefile=\write3
+\openout3 = `oh_deer_revised.out'.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 2
+2.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `pcr' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+Package natbib Warning: Citation `bemowski2026' on page 1 undefined on input li
+ne 25.
+
+
+Package natbib Warning: Citation `nexus2026' on page 1 undefined on input line 
+25.
+
+
+Package natbib Warning: Citation `beery2019' on page 1 undefined on input line 
+25.
+
+
+Package natbib Warning: Citation `dnr2025' on page 1 undefined on input line 28
+.
+
+
+Package natbib Warning: Citation `newbolt2019' on page 1 undefined on input lin
+e 28.
+
+
+Package natbib Warning: Citation `beery2018' on page 1 undefined on input line 
+28.
+
+
+Package natbib Warning: Citation `chemery2026' on page 1 undefined on input lin
+e 28.
+
+
+Package natbib Warning: Citation `vyskocil2025' on page 1 undefined on input li
+ne 28.
+
+
+Package natbib Warning: Citation `oquab2024' on page 1 undefined on input line 
+33.
+
+
+Package natbib Warning: Citation `gu2025' on page 1 undefined on input line 33.
+
+
+
+Package natbib Warning: Citation `radford2021' on page 1 undefined on input lin
+e 33.
+
+[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+No file oh_deer_revised.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+(./oh_deer_revised.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-02-20>
+ ***********
+Package rerunfilecheck Info: File `oh_deer_revised.out' has not changed.
+(rerunfilecheck)             Checksum: 2BD60CBFFF2C726970894C55E9264C1A;486.
+ ) 
+Here is how much of TeX's memory you used:
+ 16409 strings out of 474116
+ 271638 string characters out of 5743681
+ 1946187 words of memory out of 5000000
+ 38424 multiletter control sequences out of 15000+600000
+ 581650 words of font info for 163 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 75i,8n,85p,1253b,455s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on oh_deer_revised.pdf (1 page, 60345 bytes).
+PDF statistics:
+ 51 PDF objects out of 1000 (max. 8388607)
+ 39 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
+ 30753 words of extra memory for PDF output out of 35830 (max. 10000000)
+
