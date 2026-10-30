@@ -1,0 +1,32 @@
+output_folder: "../logs"
+loader:
+  # Swin-T keeps more activations than ResNet-18 (the deepest map is 768
+  # channels, and each window stores an attention matrix). Batch 2 is the
+  # safe start on an 8GB laptop 4070. Raise this to 4 if the run fits.
+  batch_size: 2
+  num_workers: 4
+dataset:
+  img_folder: "../data/VOCdevkit/VOC2007/JPEGImages"
+  json_folder: "../data"
+model:
+  # Swin-T stages that match the ResNet strides the rest of FCOS expects.
+  # features.3 / .5 / .7 are stride 8 / 16 / 32. Channel counts are
+  # 192 / 384 / 768. The FPN still adds stride 64 and 128.
+  backbone: swin_t
+  backbone_out_feats: ["features.3", "features.5", "features.7"]
+  backbone_out_feats_dims: [192, 384, 768]
+  # Swin uses LayerNorm, which normalizes one token at a time, so a small
+  # batch does not make it unstable. There is no BatchNorm to freeze.
+  backbone_freeze_bn: false
+opt:
+  # Transformers are trained with AdamW, not the SGD schedule used for
+  # ResNet-18. 1e-4 with weight decay 0.05 is the usual Swin fine-tune.
+  # Biases and the relative-position table are excluded from decay in
+  # det_libs/utils.py. Epoch count matches the required VOC run (10 + 1
+  # warmup) so the two curves are comparable.
+  type: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.05
+  epochs: 10
+  warmup: true
+  warmup_epochs: 1

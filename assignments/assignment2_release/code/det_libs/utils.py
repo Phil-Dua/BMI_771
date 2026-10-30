@@ -34,8 +34,17 @@ def build_optimizer(model, optimizer_config):
     for mn, m in model.named_modules():
         for pn, p in m.named_parameters():
             fpn = "%s.%s" % (mn, pn) if mn else pn  # full param name
-            if p.ndim <= 1 or pn.endswith("bias") or "pos_embed" in pn:
-                # all biases will not be decayed
+            if (
+                p.ndim <= 1
+                or pn.endswith("bias")
+                or "pos_embed" in pn
+                or "relative_position_bias_table" in pn
+            ):
+                # Biases, position embeddings, and Swin's relative-position
+                # table are not weight matrices. Decaying them shrinks the
+                # attention bias toward zero. The table is 2D, so ndim <= 1
+                # does not catch it. Without this name check the table would
+                # fall through both branches and build_optimizer would raise.
                 no_decay.add(fpn)
             elif pn.endswith("weight") and isinstance(m, whitelist_weight_modules):
                 # weights of whitelist modules will be weight decayed
@@ -43,6 +52,12 @@ def build_optimizer(model, optimizer_config):
             elif pn.endswith("weight") and isinstance(m, blacklist_weight_modules):
                 # weights of blacklist modules will NOT be weight decayed
                 no_decay.add(fpn)
+            elif pn.endswith("weight") and p.ndim > 1:
+                # A weight matrix the isinstance checks did not recognize.
+                # Swin's attention projections are ordinary matrices and
+                # should be decayed even if a wrapper has hidden the Linear
+                # class. Norm scales are 1D and already went into no_decay.
+                decay.add(fpn)
 
     # validate that we considered every parameter
     param_dict = {pn: p for pn, p in model.named_parameters()}

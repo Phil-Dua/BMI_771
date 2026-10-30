@@ -159,11 +159,18 @@ def evaluate(
             boxes = convert_to_xywh(output["boxes"]).tolist()
             scores = output["scores"].tolist()
             labels = output["labels"].tolist()
+            # The head's class index is contiguous and 1-based (inference adds
+            # 1). VOC category ids already are 1..20, so this is the identity
+            # there. COCO ids skip numbers (there is no category 12), so the
+            # dataset maps the head index back to the id written in the json.
+            # pycocotools scores a detection only when category_id matches the
+            # ground-truth json.
+            to_category_id = val_loader.dataset.to_coco_category_id
             for box, score, label in zip(boxes, scores, labels):
                 det_results.append(
                     {
                         "image_id": image_id,
-                        "category_id": int(label),
+                        "category_id": int(to_category_id(label)),
                         "bbox": box,
                         "score": score,
                     }

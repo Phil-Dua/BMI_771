@@ -8,3 +8,8 @@ __pycache__/
 assignments/assignment2_release/data/VOCdevkit/
 # Assignment 2 classification: bash download_cls_dataset.sh
 assignments/assignment2_release/data/images/
+# Assignment 2 COCO bonus: bash download_coco.sh
+assignments/assignment2_release/data/coco/
+# Training logs stay out of git. Copy the yaml, TensorBoard events, and
+# model_final.pth.tar into results/ when you build the submission.
+assignments/assignment2_release/logs/

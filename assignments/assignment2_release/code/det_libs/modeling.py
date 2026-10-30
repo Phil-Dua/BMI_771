@@ -3,6 +3,7 @@ import torch
 import torchvision
 
 from torchvision.models import resnet
+from torchvision.models import swin_t, Swin_T_Weights
 from torchvision.models.feature_extraction import create_feature_extractor
 from torchvision.ops.feature_pyramid_network import FeaturePyramidNetwork, LastLevelP6P7
 from torchvision.ops.boxes import batched_nms
@@ -138,13 +139,134 @@ class FCOSRegressionHead(nn.Module):
         return reg_outputs, ctr_outputs
 
 
+class SwinStageExtractor(nn.Module):
+    """Swin-T stages as a normal Module, not a traced graph.
+
+    create_feature_extractor (used for ResNet below) traces the network.
+    On Swin that trace replaces each attention Linear with a plain Module
+    that still owns a `weight` tensor but is no longer nn.Linear.
+    build_optimizer then cannot tell those matrices from an unrecognized
+    parameter and refuses to build. Walking `features` ourselves keeps the
+    real Linear, LayerNorm, and relative-position table, which is also what
+    you see if you print a block while debugging.
+
+    `stage_names` looks like ["features.3", "features.5", "features.7"].
+    The number is the index into Swin-T's `features` Sequential:
+    0 patch embed, 1 stage, 2 merge, 3 stage, 4 merge, 5 stage, 6 merge, 7 stage.
+    """
+
+    def __init__(self, stage_names):
+        super().__init__()
+        # The classification head on this model is not registered here.
+        # Detection does not use it, and leaving it out keeps those
+        # parameters out of the optimizer.
+        model = swin_t(weights=Swin_T_Weights.IMAGENET1K_V1)
+        self.features = model.features
+        self.stage_names = list(stage_names)
+        self.stage_indexes = [self._index(name) for name in self.stage_names]
+
+    @staticmethod
+    def _index(name):
+        prefix = "features."
+        suffix = name[len(prefix):] if name.startswith(prefix) else ""
+        if not suffix.isdigit():
+            raise ValueError(
+                "Swin backbone_out_feats entries must look like 'features.3', got %r."
+                % name
+            )
+        return int(suffix)
+
+    def forward(self, x):
+        # Collect by index, then emit in the yaml's order. The FPN pairs
+        # backbone_out_feats_dims[i] with the i-th entry of this dict, so
+        # the order has to follow the config, not the order we happened to
+        # compute the stages in.
+        found = {}
+        wanted = set(self.stage_indexes)
+        for index, layer in enumerate(self.features):
+            x = layer(x)
+            if index in wanted:
+                found[index] = x
+        missing = [name for name, index in zip(self.stage_names, self.stage_indexes) if index not in found]
+        if missing:
+            raise RuntimeError(
+                "Swin-T features has %d modules; these stages were not produced: %s"
+                % (len(self.features), missing)
+            )
+        return {
+            name: found[index]
+            for name, index in zip(self.stage_names, self.stage_indexes)
+        }
+
+
+class FCOSBackbone(nn.Module):
+    """ImageNet backbone that always returns NCHW feature maps for the FPN.
+
+    ResNet stages are already NCHW: channel is dimension 1, which is what
+    FeaturePyramidNetwork's convolutions read. Torchvision's Swin-T is not.
+    Its blocks attend over the last dimension, so each stage comes out as
+    NHWC (batch, height, width, channel). This module permutes those maps
+    once, here, so the FPN, the heads, and the loss stay the same object
+    for both backbones.
+
+    Which stages are returned is chosen by the yaml (`backbone_out_feats`).
+    For Swin-T the maps that line up with ResNet layer2/3/4 are:
+
+        features.3  stride 8    192 channels
+        features.5  stride 16   384 channels
+        features.7  stride 32   768 channels
+
+    features.1 (stride 4, 96 channels) is left out of the FPN on purpose.
+    It still runs, because features.3 is built from it. The FPN then adds
+    stride 64 and 128 from the stride-32 map. The point generator, the
+    regression ranges, and the loss already assume strides 8, 16, 32, 64, 128.
+    """
+
+    RESNETS = ("resnet18", "resnet34", "resnet50", "resnet101", "resnet152")
+
+    def __init__(self, name, return_nodes):
+        super().__init__()
+        self.channels_last = False
+        if name in self.RESNETS:
+            # Same initialization the provided ResNet-18 detector uses.
+            # ImageNet weights give the FPN something that already sees edges
+            # and textures; training from scratch on VOC does not.
+            backbone_model = resnet.__dict__[name](weights="IMAGENET1K_V1")
+            self.extractor = create_feature_extractor(
+                backbone_model, return_nodes=return_nodes
+            )
+        elif name == "swin_t":
+            # Smallest Swin (about 28M parameters), which is the practical
+            # choice on an 8GB laptop GPU. IMAGENET1K_V1 is the classification
+            # checkpoint; detection fine-tunes it.
+            self.extractor = SwinStageExtractor(list(return_nodes))
+            self.channels_last = True
+        else:
+            raise ValueError(
+                "Unsupported backbone %r. Use one of %s or 'swin_t'."
+                % (name, ", ".join(self.RESNETS))
+            )
+
+    def forward(self, x):
+        features = self.extractor(x)
+        if not self.channels_last:
+            return features
+        # permute is a view with a different stride. contiguous() makes the
+        # following convolutions happy; some of them refuse a non-contiguous
+        # NCHW tensor that is really stored as NHWC.
+        return {
+            name: value.permute(0, 3, 1, 2).contiguous()
+            for name, value in features.items()
+        }
+
+
 class FCOS(nn.Module):
     """
     Implementation of Fully Convolutional One-Stage (FOCS) object detector,
     as desribed in the journal paper: https://arxiv.org/abs/2006.09214
 
     Args:
-        backbone (string): backbone network, only ResNet18 is supported
+        backbone (string): backbone network. ResNet-18/34/50/101/152 or swin_t.
         backbone_freeze_bn (bool): if to freeze batch norm in the backbone
         backbone_out_feats (List[string]): output feature maps from the backbone network
         backbone_out_feats_dims (List[int]): backbone output features dimensions
@@ -194,7 +316,19 @@ class FCOS(nn.Module):
         test_cfg,
     ):
         super().__init__()
-        assert backbone in ("resnet18", "resnet34", "resnet50", "resnet101", "resnet152")
+        if len(backbone_out_feats) != len(backbone_out_feats_dims):
+            raise ValueError(
+                "backbone_out_feats and backbone_out_feats_dims must list the "
+                "same stages. Got %s and %s."
+                % (list(backbone_out_feats), list(backbone_out_feats_dims))
+            )
+        # The classification and regression towers use GroupNorm(16, C).
+        # C has to be divisible by 16 or that layer cannot be built.
+        if fpn_feats_dim % 16 != 0:
+            raise ValueError(
+                "fpn_feats_dim must be divisible by 16 (GroupNorm groups). Got %d."
+                % fpn_feats_dim
+            )
         self.backbone_name = backbone
         self.backbone_freeze_bn = backbone_freeze_bn
         self.fpn_strides = fpn_strides
@@ -205,11 +339,10 @@ class FCOS(nn.Module):
         for feat in backbone_out_feats:
             return_nodes.update({feat: feat})
 
-        # backbone network
-        backbone_model = resnet.__dict__[backbone](weights="IMAGENET1K_V1")
-        self.backbone = create_feature_extractor(
-            backbone_model, return_nodes=return_nodes
-        )
+        # ResNet or Swin. Both return a dict of NCHW maps keyed by the names
+        # in backbone_out_feats. Swin has no BatchNorm; backbone_freeze_bn
+        # only switches BatchNorm2d to eval, so it is a no-op for Swin.
+        self.backbone = FCOSBackbone(backbone, return_nodes)
 
         # feature pyramid network (FPN)
         self.fpn = FeaturePyramidNetwork(

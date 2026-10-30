@@ -63,6 +63,7 @@ def main(args):
         cfg["dataset"]["train"],
         cfg["dataset"]["img_folder"],
         cfg["dataset"]["json_folder"],
+        max_images=cfg["dataset"].get("max_images"),
     )
     # data loaders
     train_loader = build_dataloader(train_dataset, True, **cfg["loader"])
@@ -71,6 +72,16 @@ def main(args):
     # model
     device = torch.device(cfg["devices"][0])
     model = FCOS(**cfg["model"]).to(device)
+    # COCO's json has 80 categories. A yaml that still says 20 (the VOC
+    # default) would train a head that is the wrong width. Fail here, before
+    # the first batch, with the two numbers side by side.
+    dataset_classes = getattr(train_dataset, "num_classes", None)
+    if dataset_classes is not None and dataset_classes != model.num_classes:
+        raise ValueError(
+            "Dataset has %d categories but model.num_classes is %d. "
+            "Set model.num_classes in the yaml to the dataset count."
+            % (dataset_classes, model.num_classes)
+        )
     # optimizer
     optimizer = build_optimizer(model, cfg["opt"])
     # schedule

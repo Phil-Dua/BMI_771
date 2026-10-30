@@ -1,0 +1,38 @@
+output_folder: "../logs"
+loader:
+  # Same batch as the VOC ResNet-18 run. An 8GB 4070 that finished that
+  # run should finish this one. Short side is kept at 256-320 for the
+  # same reason: COCO images are larger, and the full 640px scale is not
+  # required to show that training and evaluation work.
+  batch_size: 4
+  num_workers: 4
+dataset:
+  name: COCO
+  train: train2017
+  test: val2017
+  # Layout produced by ../download_coco.sh:
+  #   ../data/coco/train2017/*.jpg
+  #   ../data/coco/val2017/*.jpg
+  #   ../data/coco/annotations/instances_train2017.json
+  #   ../data/coco/annotations/instances_val2017.json
+  img_folder: "../data/coco"
+  json_folder: "../data/coco/annotations"
+  # 8000 of ~118k train images, chosen once with seed 0. Set this to null
+  # to train on the full train2017 set. Val is never subsampled.
+  max_images: 8000
+model:
+  backbone: resnet18
+  # COCO instances has 80 categories. The ids in the json are not 1..80;
+  # dataset.py packs them. This number must stay 80 or train_det.py stops
+  # before the first step.
+  num_classes: 80
+opt:
+  # Same optimizer as the required VOC run. Four cosine epochs plus one
+  # warmup epoch is the short schedule the assignment suggests. The head
+  # and FPN are randomly initialized, so the loss will still be falling
+  # at epoch 4. That is enough to show the pipeline trains.
+  type: SGD
+  learning_rate: 0.005
+  epochs: 4
+  warmup: true
+  warmup_epochs: 1

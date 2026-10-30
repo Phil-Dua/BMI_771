@@ -71,9 +71,13 @@ def main(args):
     del checkpoint
 
     # set up evaluator
-    gt_json_file = os.path.join(
-        cfg["dataset"]["json_folder"], cfg["dataset"]["test"] + ".json"
-    )
+    # The dataset records the json it actually opened. COCO's file is
+    # instances_val2017.json, which is not "<split>.json".
+    gt_json_file = getattr(val_dataset, "ann_file", None)
+    if not gt_json_file:
+        gt_json_file = os.path.join(
+            cfg["dataset"]["json_folder"], cfg["dataset"]["test"] + ".json"
+        )
     output_file = os.path.join(os.path.split(ckpt_file)[0], "eval_results.json")
 
     """5. Test the model"""
